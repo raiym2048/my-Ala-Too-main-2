@@ -7,6 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -24,11 +25,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
-    Integer id;
+    private Integer id;
 
-    String email;
-    String password;
-    @ManyToMany
+    private String email;
+    private String password;
+    private LocalDateTime regDate;
+    private Boolean isActive;
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",  // Specify the name of the join table
             joinColumns = @JoinColumn(name = "user_id"),  // Name of the column in this table (users) that references the join table
