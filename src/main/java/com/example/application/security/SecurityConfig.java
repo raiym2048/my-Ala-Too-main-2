@@ -32,8 +32,8 @@ public class SecurityConfig extends VaadinWebSecurity {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth ->
                 auth.requestMatchers(
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET, "/login"),
-                        AntPathRequestMatcher.antMatcher(HttpMethod.GET, "/register")).permitAll()
+                        AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/login"),
+                        AntPathRequestMatcher.antMatcher(HttpMethod.POST, "/register")).permitAll()
         );
         super.configure(http);
         setLoginView(http, LoginView.class);

@@ -1,4 +1,3 @@
-CREATE SEQUENCE IF NOT EXISTS user_seq;
 
 create table if not exists language(
     code char(2) primary key ,-- primary key
@@ -84,7 +83,7 @@ create table if not exists stud_info(
     citizenship_id int references address(id) not null , -- citizenship_id
     nationality_id int references nationality(id) not null ,
     gender_id int references gender(id),
-    married_status_id int references marital_status(id), -- marital_status_id
+    marital_status_id int references marital_status(id), -- marital_status_id
     iin varchar(25) unique not null , -- 25
     military_id int references military(id)
     );
